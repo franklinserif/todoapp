@@ -1,25 +1,18 @@
-import React, {useState} from 'react';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  background-color: blue;
+`;
 
 /**
  * React Component
- * @return {*}
+ * @return {JSX.Element} <App><App/>
  */
 function App() {
-  const [name, setName] = useState(0);
-
   return (
-    <div className="App">
-      <h1>Hola React</h1>
-      <div>
-        <label htmlFor="name">Name:</label>
-        <input
-          id="name"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        ></input>
-      </div>
-    </div>
+    <Wrapper className="App">
+      <p>hello</p>
+    </Wrapper>
   );
 }
 
