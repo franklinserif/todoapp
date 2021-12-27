@@ -1,9 +1,11 @@
-import {useState} from 'react';
-import {ThemeProvider} from 'styled-components';
+import {createContext} from 'react';
+import useDarkMode from '../CustomHooks/useDarkMode';
 import GlobalStyle from './globalStyle.styled';
-import {darkStyle, lightStyle} from './themeStyles';
-import PropTypes from 'prop-types';
+import {darkStyle, lightStyle, theme} from './themeStyles';
+import propTypes from 'prop-types';
 
+
+export const ThemeContext = createContext({});
 
 /**
  *  It provide the theme and setThemeMode function
@@ -11,20 +13,20 @@ import PropTypes from 'prop-types';
  * @return {JSX.Element} <Theme />
  */
 function Theme({children}) {
-  const [themeMode, setThemeMode] = useState(false);
+  const [darkMode, setDarkMode] = useDarkMode(false);
 
-  // if theme is true it return light if not return dark theme
-  const theme = themeMode ? lightStyle : darkStyle;
+  // if darkMode is true it will return light if it's not return dark style
+  const styles = darkMode ? {theme, lightStyle} : {theme, darkStyle};
 
   // it would provide theme data and setThemeModo funct to children
-  return <ThemeProvider theme={theme}>
+  return <ThemeContext.Provider value={{styles, setDarkMode}}>
     <GlobalStyle />
     {children}
-  </ThemeProvider>;
+  </ThemeContext.Provider>;
 }
 
 Theme.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: propTypes.node.isRequired,
 };
 
 export default Theme;

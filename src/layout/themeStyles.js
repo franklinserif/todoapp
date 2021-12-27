@@ -2,4 +2,6 @@ const darkStyle = {};
 
 const lightStyle = {};
 
-export {darkStyle, lightStyle};
+const theme = {};
+
+export {darkStyle, lightStyle, theme};

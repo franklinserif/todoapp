@@ -1,3 +1,7 @@
+import {useContext, useEffect} from 'react';
+import {ThemeContext} from '../../layout/Theme';
+
+
 import StyledHeader from './header.styled';
 
 /**
@@ -5,6 +9,12 @@ import StyledHeader from './header.styled';
  * @return {JSX.Element} <Header/>
  */
 function Header() {
+  const {setDarkMode} = useContext(ThemeContext);
+
+  useEffect(() => {
+    console.log(setDarkMode);
+  }, []);
+
   return <StyledHeader>
     Header
   </StyledHeader>;

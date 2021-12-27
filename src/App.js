@@ -10,8 +10,8 @@ function App() {
   return (
     <main className="App">
       <TodoProvider>
-        <Todo />
         <Header />
+        <Todo />
       </TodoProvider>
     </main>
   );

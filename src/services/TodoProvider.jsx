@@ -1,7 +1,7 @@
 import {createContext, useReducer} from 'react';
 import storeReducer, {types} from './storeReducer';
 import Theme from '../layout/Theme';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 
 const TodoContext = createContext({});
@@ -14,7 +14,7 @@ const TodoContext = createContext({});
 function TodoProvider({children}) {
   const [todos, dispatch] = useReducer(storeReducer, {});
 
-  return <TodoContext.Provider data={{todos, dispatch, types}} >
+  return <TodoContext.Provider value={{todos, dispatch, types}} >
     <Theme>
       {children}
     </Theme>
@@ -22,7 +22,7 @@ function TodoProvider({children}) {
 }
 
 TodoProvider.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: propTypes.node.isRequired,
 };
 
 export default TodoProvider;
