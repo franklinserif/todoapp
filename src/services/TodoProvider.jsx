@@ -1,5 +1,5 @@
-import {createContext, useReducer} from 'react';
-import storeReducer, {types} from './storeReducer';
+import {createContext, useReducer, useEffect} from 'react';
+import todoReducer, {types} from './todoReducer';
 import Theme from '../layout/Theme';
 import propTypes from 'prop-types';
 
@@ -12,7 +12,15 @@ const TodoContext = createContext({});
  * @return {JSX.Element} <TodoProvider>
  */
 function TodoProvider({children}) {
-  const [todos, dispatch] = useReducer(storeReducer, {});
+  const [todos, dispatch] = useReducer(todoReducer, {});
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    } catch (error) {
+      console.log('error: ' + error);
+    }
+  }, [todos]);
 
   return <TodoContext.Provider value={{todos, dispatch, types}} >
     <Theme>
