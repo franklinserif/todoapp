@@ -18,7 +18,7 @@ function useDarkMode(initialState = false) {
    */
   useEffect(() => {
     try {
-      localStorage.set('darkMode', JSON.stringify({darkMode: darkMode}));
+      localStorage.setItem('darkMode', JSON.stringify({darkMode: darkMode}));
     } catch (error) {
       console.log('error: ' + error);
     }

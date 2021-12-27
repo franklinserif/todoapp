@@ -12,8 +12,7 @@ function Header() {
   const {setDarkMode} = useContext(ThemeContext);
 
   useEffect(() => {
-    console.log(setDarkMode);
-  }, []);
+  }, [setDarkMode]);
 
   return <StyledHeader>
     Header

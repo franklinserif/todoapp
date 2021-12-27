@@ -1,19 +1,20 @@
 import {createContext, useReducer, useEffect} from 'react';
-import todoReducer, {types} from './todoReducer';
+import todoReducer, {types, initalTodoState} from './todoReducer';
 import Theme from '../layout/Theme';
 import propTypes from 'prop-types';
 
 
-const TodoContext = createContext({});
+export const TodoContext = createContext({});
+
 /**
- * It provides the dispatch function for all
+ * It provides the todos, todo dispatch and types for all
  * his children component
  * @param {JSX.Element} children
  * @return {JSX.Element} <TodoProvider>
  */
 function TodoProvider({children}) {
-  const [todos, dispatch] = useReducer(todoReducer, {});
-
+  const [todos, dispatch] = useReducer(todoReducer,
+      initalTodoState || JSON.parse(localStorage.getItem('todos')));
   useEffect(() => {
     try {
       localStorage.setItem('todos', JSON.stringify(todos));
