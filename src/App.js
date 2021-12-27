@@ -1,18 +1,19 @@
-import styled from 'styled-components';
-
-const Wrapper = styled.div`
-  background-color: blue;
-`;
+import TodoProvider from './services/TodoProvider';
+import Todo from './components/Todo/Todo';
+import Header from './components/Header/Header';
 
 /**
- * React Component
+ * Main component container
  * @return {JSX.Element} <App><App/>
  */
 function App() {
   return (
-    <Wrapper className="App">
-      <p>hello</p>
-    </Wrapper>
+    <main className="App">
+      <TodoProvider>
+        <Todo />
+        <Header />
+      </TodoProvider>
+    </main>
   );
 }
 
