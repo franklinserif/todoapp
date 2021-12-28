@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import {useState} from 'react';
 import propTypes from 'prop-types';
 import CheckButton from '../CheckButton/CheckButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
@@ -12,10 +12,29 @@ import StyledTodo from './todo.styled';
  * @return {JSX.Element} <Todo todo={todo} />
  */
 function Todo({todo}) {
+  const [completedButton, setCompletedButton] = useState(false);
+  const [deleteButton, setDeleteButton] = useState(false);
+
+  const handleCompletedTodo = () => {
+    setCompletedButton(!completedButton);
+  };
+
+  const handlerDeleteTodo = () => {
+    setDeleteButton(!deleteButton);
+  };
+
   return <StyledTodo>
-    <CheckButton/>
+    <CheckButton
+      completedButton={completedButton}
+      handlerCompletedTodo={handleCompletedTodo}
+    />
+
     <span>{todo?.content}</span>
-    <DeleteButton />
+
+    <DeleteButton
+      deleteButton={deleteButton}
+      handlerCompleteTodo={handlerDeleteTodo}
+    />
   </StyledTodo>;
 }
 

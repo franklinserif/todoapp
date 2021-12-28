@@ -4,7 +4,7 @@ import Theme from '../layout/Theme';
 import propTypes from 'prop-types';
 
 
-export const TodoContext = createContext({});
+export const TodoContext = createContext([]);
 
 /**
  * It provides the todos, todo dispatch and types for all
