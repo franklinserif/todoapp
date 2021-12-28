@@ -7,12 +7,12 @@ import StyledCheckButton from './CheckButton.styled';
  * @param {boolean} completedButton
  * @return {JSX.Element} <CheckButton/>
  */
-function CheckButton({completedButton, handlerCompletedTodo}) {
+function CheckButton({completedButton, handleCompletedTodo}) {
   return <StyledCheckButton>
     <input
       type="checkbox"
       checked={completedButton}
-      onChange={handlerCompletedTodo}
+      onChange={handleCompletedTodo}
     />
   </StyledCheckButton>;
 }

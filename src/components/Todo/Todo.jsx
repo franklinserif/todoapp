@@ -1,5 +1,4 @@
 import {useState} from 'react';
-import propTypes from 'prop-types';
 import CheckButton from '../CheckButton/CheckButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
 
@@ -11,37 +10,46 @@ import StyledTodo from './todo.styled';
  * @param {string} key
  * @return {JSX.Element} <Todo todo={todo} />
  */
-function Todo({todo}) {
+function Todo({todo, dispatch, types}) {
   const [completedButton, setCompletedButton] = useState(false);
-  const [deleteButton, setDeleteButton] = useState(false);
 
+  /**
+   * Change completedButton state and todos global state
+   * @return {void}
+   */
   const handleCompletedTodo = () => {
+    // Change completedButton state
     setCompletedButton(!completedButton);
+    // Change todo state
+    dispatch(
+        {
+          types: types.COMPLETE,
+          payload: {...todo, completed: !todo.completed},
+        });
   };
 
-  const handlerDeleteTodo = () => {
-    setDeleteButton(!deleteButton);
+  /**
+   * Change deleteButtonState and todos global state
+   * @return {void}
+   */
+  const handleDeleteTodo = () => {
+    dispatch({types: types.DELETE, payload: {id: todo.id}});
   };
 
   return <StyledTodo>
     <CheckButton
       completedButton={completedButton}
-      handlerCompletedTodo={handleCompletedTodo}
+      handleCompletedTodo={handleCompletedTodo}
     />
 
-    <span>{todo?.content}</span>
+    <span
+      className={todo.completed ? 'todo-completed': ''}>
+      {todo?.content}
+    </span>
 
     <DeleteButton
-      deleteButton={deleteButton}
-      handlerCompleteTodo={handlerDeleteTodo}
+      handleDeleteTodo={handleDeleteTodo}
     />
   </StyledTodo>;
 }
-
-Todo.prototype = {
-  todo: propTypes.shape({
-    content: propTypes.string.isRequired,
-  }),
-};
-
 export default Todo;

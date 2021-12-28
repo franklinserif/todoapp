@@ -10,14 +10,22 @@ import StyledTodoList from './TodoList.styled';
  * @return {JSX.Element} <TodoList todos={todos}>
  */
 function TodoList() {
-  const {todos} = useContext(TodoContext);
+  const {todos, dispatch, types} = useContext(TodoContext);
 
   useEffect(() => {
     console.log(todos);
   }, [todos]);
 
   return <StyledTodoList>
-    {todos.map((todo) => <Todo todo={todo} key={todo.id}/>)}
+
+    {todos.map((todo) => {
+      return <Todo todo={todo}
+        dispatch={dispatch}
+        types={types}
+        key={todo.id}/>;
+    },
+    )}
+
   </StyledTodoList>;
 }
 

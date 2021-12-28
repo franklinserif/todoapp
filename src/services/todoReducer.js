@@ -5,10 +5,10 @@ export const types = {
 };
 
 export const initalTodoState = [
-  {id: 1, content: 'make the lunch'},
-  {id: 2, content: 'Practice Math'},
-  {id: 3, content: 'Go to the gym'},
-  {id: 4, content: 'Visit a friend'},
+  {id: 1, content: 'make the lunch', completed: false},
+  {id: 2, content: 'Practice Math', completed: false},
+  {id: 3, content: 'Go to the gym', completed: false},
+  {id: 4, content: 'Visit a friend', completed: false},
 ];
 
 /**
@@ -28,7 +28,7 @@ function todoReducer(prevTodos, action) {
     }
     // Check as complete, one todo
     case types.COMPLETE: {
-      return state.map((todo) =>
+      return prevTodos.map((todo) =>
         todo.id === action.payload.id ? action.payload : todo,
       );
     }

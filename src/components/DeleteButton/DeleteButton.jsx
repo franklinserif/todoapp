@@ -4,9 +4,9 @@ import StyledDeleteButton from './DeleteButton.styled';
  * Delete Button
  * @return {JSX.Element} <DeleteButton />
  */
-function DeleteButton() {
+function DeleteButton({handleDeleteTodo}) {
   return <StyledDeleteButton>
-    <button>X</button>
+    <button onClick={handleDeleteTodo}>X</button>
   </StyledDeleteButton>;
 }
 
