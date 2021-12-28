@@ -14,7 +14,7 @@ export const TodoContext = createContext([]);
  */
 function TodoProvider({children}) {
   const [todos, dispatch] = useReducer(todoReducer,
-      initalTodoState || JSON.parse(localStorage.getItem('todos')));
+      JSON.parse(localStorage.getItem('todos'))) || initalTodoState;
   useEffect(() => {
     try {
       localStorage.setItem('todos', JSON.stringify(todos));
