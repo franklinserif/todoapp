@@ -4,6 +4,7 @@ export const types = {
   DELETE: 'TODO - DELETE',
   COMPLETE: 'TODO - COMPLETE',
   CREATE: 'TODO - CREATE',
+  CLEAR_ALL_TODOS: 'TODO - CLEAR ALL TODOS',
 };
 
 export const options = {

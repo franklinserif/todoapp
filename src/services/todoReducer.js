@@ -33,6 +33,10 @@ function todoReducer(prevTodos, action) {
     case types.DELETE: {
       return [...prevTodos.filter((todo) => todo.id !== action.payload.id)];
     }
+
+    case types.CLEAR_ALL_TODOS: {
+      return [];
+    }
     default:
       return prevTodos;
   }
