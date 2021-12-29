@@ -1,5 +1,6 @@
 import {createContext, useReducer, useEffect} from 'react';
-import todoReducer, {types, initalTodoState} from './todoReducer';
+import todoReducer from './todoReducer';
+import {initalTodoState, types} from '../Helpers/Constants';
 import Theme from '../layout/Theme';
 import propTypes from 'prop-types';
 

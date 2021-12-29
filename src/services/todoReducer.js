@@ -1,15 +1,4 @@
-export const types = {
-  DELETE: 'TODO - DELETE',
-  COMPLETE: 'TODO - COMPLETE',
-  CREATE: 'TODO - CREATE',
-};
-
-export const initalTodoState = [
-  {id: 1, content: 'make the lunch', completed: false},
-  {id: 2, content: 'Practice Math', completed: false},
-  {id: 3, content: 'Go to the gym', completed: false},
-  {id: 4, content: 'Visit a friend', completed: false},
-];
+import {types} from '../Helpers/Constants';
 
 /**
  * It would handle all the main logic for
@@ -24,7 +13,13 @@ function todoReducer(prevTodos, action) {
   switch (action.types) {
     // Add new todo
     case types.CREATE: {
-      return [...prevTodos, ...action.payload];
+      const newTodo = {
+        id: prevTodos[prevTodos.length - 1].id + 1,
+        content: action.payload,
+        completed: false,
+      };
+
+      return [...prevTodos, newTodo];
     }
     // Check as complete, one todo
     case types.COMPLETE: {
