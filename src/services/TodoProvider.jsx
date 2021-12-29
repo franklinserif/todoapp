@@ -1,8 +1,9 @@
 import {createContext, useReducer, useEffect} from 'react';
 import todoReducer from './todoReducer';
 import {initalTodoState, types} from '../Helpers/Constants';
+import useFilter from '../CustomHooks/useFilter';
+import {options} from '../Helpers/Constants';
 import Theme from '../layout/Theme';
-import propTypes from 'prop-types';
 
 
 export const TodoContext = createContext([]);
@@ -15,7 +16,9 @@ export const TodoContext = createContext([]);
  */
 function TodoProvider({children}) {
   const [todos, dispatch] = useReducer(todoReducer,
-      JSON.parse(localStorage.getItem('todos'))) || initalTodoState;
+      JSON.parse(localStorage.getItem('todos')) || initalTodoState);
+  const [filteredTodos, setAction] = useFilter(todos, options.ALL);
+
   useEffect(() => {
     try {
       localStorage.setItem('todos', JSON.stringify(todos));
@@ -24,15 +27,13 @@ function TodoProvider({children}) {
     }
   }, [todos]);
 
-  return <TodoContext.Provider value={{todos, dispatch, types}} >
+  return <TodoContext.Provider
+    value={{filteredTodos, dispatch, types, setAction}}
+  >
     <Theme>
       {children}
     </Theme>
   </TodoContext.Provider>;
 }
-
-TodoProvider.propTypes = {
-  children: propTypes.node.isRequired,
-};
 
 export default TodoProvider;

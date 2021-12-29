@@ -1,12 +1,14 @@
 import StyledTodoOptionButton from './TodoOptionButton.styled';
 
 /**
- * A todo option button
+ * Change the state of todos.options
+ * @param {string} action
+ * @param {Function} handleClick
  * @return {JSX.Element} <TodoOptionButton />
  */
-function TodoOptionButton() {
+function TodoOptionButton({action, handleClick}) {
   return <StyledTodoOptionButton>
-      options
+    <button onClick={()=> handleClick(action)}>{action}</button>
   </StyledTodoOptionButton>;
 }
 

@@ -2,7 +2,6 @@ import {createContext} from 'react';
 import useDarkMode from '../CustomHooks/useDarkMode';
 import GlobalStyle from './globalStyle.styled';
 import {darkStyle, lightStyle, theme} from './themeStyles';
-import propTypes from 'prop-types';
 
 
 export const ThemeContext = createContext({});
@@ -19,14 +18,10 @@ function Theme({children}) {
   const styles = darkMode ? {theme, lightStyle} : {theme, darkStyle};
 
   // it would provide theme data and setThemeModo funct to children
-  return <ThemeContext.Provider value={{styles, setDarkMode}}>
+  return <ThemeContext.Provider value={{styles, setDarkMode, darkMode}}>
     <GlobalStyle />
     {children}
   </ThemeContext.Provider>;
 }
-
-Theme.propTypes = {
-  children: propTypes.node.isRequired,
-};
 
 export default Theme;

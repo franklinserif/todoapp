@@ -6,6 +6,12 @@ export const types = {
   CREATE: 'TODO - CREATE',
 };
 
+export const options = {
+  ALL: 'ALL',
+  COMPLETED: 'COMPLETED',
+  ACTIVE: 'ACTIVE',
+};
+
 // Inital State for todo useReducer
 export const initalTodoState = [
   {id: 1, content: 'make the lunch', completed: false},

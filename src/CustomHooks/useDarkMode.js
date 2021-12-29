@@ -5,11 +5,11 @@ import {useState, useEffect} from 'react';
  * It would load the DarkMode config to localstorege and return
  * the state and set function
  * @param {boolean} initialState
- * @return {array}
+ * @return {array} [darkMode, setDarkMode]
  */
 function useDarkMode(initialState = false) {
   const [darkMode, setDarkMode] = useState(
-    initialState || JSON.parse(localStorage.getItem('darkMode')).darkMode,
+    JSON.parse(localStorage.getItem('darkMode'))?.darkMode || initialState,
   );
 
   /**

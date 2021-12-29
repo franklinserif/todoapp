@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react';
+import {useContext} from 'react';
 import {TodoContext} from '../../services/TodoProvider';
 import Todo from '../Todo/Todo';
 
@@ -10,15 +10,11 @@ import StyledTodoList from './TodoList.styled';
  * @return {JSX.Element} <TodoList todos={todos}>
  */
 function TodoList() {
-  const {todos, dispatch, types} = useContext(TodoContext);
-
-  useEffect(() => {
-    console.log(todos);
-  }, [todos]);
+  const {filteredTodos, dispatch, types} = useContext(TodoContext);
 
   return <StyledTodoList>
 
-    {todos.map((todo) => {
+    {filteredTodos.map((todo) => {
       return <Todo todo={todo}
         dispatch={dispatch}
         types={types}

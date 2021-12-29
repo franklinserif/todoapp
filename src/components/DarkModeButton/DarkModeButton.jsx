@@ -1,3 +1,5 @@
+import {useContext} from 'react';
+import {ThemeContext} from '../../layout/Theme';
 import StyledDarkModeButton from './DarkModeButton.styled';
 
 
@@ -6,8 +8,18 @@ import StyledDarkModeButton from './DarkModeButton.styled';
  * @return {JSX.Element}
  */
 function DarkModeButton() {
+  const {darkMode, setDarkMode} = useContext(ThemeContext);
+
+  /**
+   * Change dark Mode state
+   * @return {void}
+   */
+  const handleClick = () => {
+    setDarkMode(!darkMode);
+  };
+
   return <StyledDarkModeButton>
-    <button>Change Dark mode</button>
+    <button onClick={handleClick}>Change Dark mode</button>
   </StyledDarkModeButton>;
 }
 

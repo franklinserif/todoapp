@@ -1,3 +1,4 @@
+import DarkModeButton from '../DarkModeButton/DarkModeButton';
 import {useContext, useEffect, useState} from 'react';
 import {TodoContext} from '../../services/TodoProvider';
 import {KEY_ENTER} from '../../Helpers/Constants';
@@ -39,6 +40,8 @@ function Header() {
   }, [setDarkMode]);
 
   return <StyledHeader onKeyPress={handleKeyPress}>
+    <DarkModeButton />
+    <h1>Todo app</h1>
     <Input inputValue={inputValue} hanldeInputChange={hanldeInputChange}/>
   </StyledHeader>;
 }

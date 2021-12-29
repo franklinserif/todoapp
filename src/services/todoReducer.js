@@ -23,16 +23,18 @@ function todoReducer(prevTodos, action) {
     }
     // Check as complete, one todo
     case types.COMPLETE: {
-      return prevTodos.map((todo) =>
-        todo.id === action.payload.id ? action.payload : todo,
-      );
+      return [
+        ...prevTodos.map((todo) =>
+          todo.id === action.payload.id ? action.payload : todo,
+        ),
+      ];
     }
     // Delete a todo
     case types.DELETE: {
-      return prevTodos.filter((todo) => todo.id !== action.payload.id);
+      return [...prevTodos.filter((todo) => todo.id !== action.payload.id)];
     }
     default:
-      return state;
+      return prevTodos;
   }
 }
 
