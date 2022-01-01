@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import {useState, useContext} from 'react';
+import {TodoContext} from '../../services/TodoProvider';
 import CheckButton from '../CheckButton/CheckButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
 
@@ -7,10 +8,12 @@ import StyledTodo from './todo.styled';
 /**
  * Todo component
  * @param {object} todo
- * @param {string} key
+ * @param {Function} dispatch
+ * @param {object} types
  * @return {JSX.Element} <Todo todo={todo} />
  */
-function Todo({todo, dispatch, types}) {
+function Todo({todo}) {
+  const {dispatch, types} = useContext(TodoContext);
   const [completedButton, setCompletedButton] = useState(false);
 
   /**

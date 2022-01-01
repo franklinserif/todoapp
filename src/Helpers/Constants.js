@@ -5,6 +5,7 @@ export const types = {
   COMPLETE: 'TODO - COMPLETE',
   CREATE: 'TODO - CREATE',
   CLEAR_ALL_TODOS: 'TODO - CLEAR ALL TODOS',
+  REORDER: 'TODO - REORDER',
 };
 
 export const options = {

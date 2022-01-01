@@ -37,6 +37,20 @@ function todoReducer(prevTodos, action) {
     case types.CLEAR_ALL_TODOS: {
       return [];
     }
+
+    case types.REORDER: {
+      const {
+        payload: {sourceIndex, destinationIndex},
+      } = action;
+      const todos = [...prevTodos];
+
+      const startIndex = todos.findIndex((todo) => todo.id === sourceIndex);
+      const endIndex = todos.findIndex((todo) => todo.id === destinationIndex);
+
+      const [remove] = todos.splice(startIndex, 1);
+      todos.splice(endIndex, 0, remove);
+      return todos;
+    }
     default:
       return prevTodos;
   }
