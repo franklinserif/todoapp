@@ -13,8 +13,9 @@ function todoReducer(prevTodos, action) {
   switch (action.types) {
     // Add new todo
     case types.CREATE: {
+      const id = prevTodos.length + 1;
       const newTodo = {
-        id: prevTodos[prevTodos.length - 1].id + 1,
+        id: id,
         content: action.payload,
         completed: false,
       };

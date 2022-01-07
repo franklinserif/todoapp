@@ -14,7 +14,7 @@ import StyledTodo from './todo.styled';
  */
 function Todo({todo}) {
   const {dispatch, types} = useContext(TodoContext);
-  const [completedButton, setCompletedButton] = useState(false);
+  const [completedButton, setCompletedButton] = useState(todo.completed);
 
   /**
    * Change completedButton state and todos global state
@@ -45,12 +45,12 @@ function Todo({todo}) {
       handleCompletedTodo={handleCompletedTodo}
     />
 
-    <span
-      className={todo.completed ? 'todo-completed': ''}>
+    <span onClick={handleCompletedTodo}
+      className={todo.completed ? 'todo todo-completed': 'todo todo-active'}>
       {todo?.content}
     </span>
 
-    <DeleteButton
+    <DeleteButton className="delete-component"
       handleDeleteTodo={handleDeleteTodo}
     />
   </StyledTodo>;

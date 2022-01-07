@@ -33,14 +33,14 @@ const StyledInput = styled.section`
   }
 
   .input-circle {
-    width: 25px;
-    height: 25px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     position: relative;
     background: transparent;
     margin-left: 0;
     margin-right: auto;
-    border: 2px solid var(--secondary-color);
+    border: 1px solid var(--secondary-color);
   }
 
   @media screen and (min-width: 700px) {

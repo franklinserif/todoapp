@@ -37,7 +37,7 @@ function TodoList() {
     <DragDropContext onDragEnd={(result) => handleDragAndDrop(result)}>
       <Droppable droppableId='tasks'>
         {(droppableProvided) => (
-          <ul
+          <ul className='todo-list'
             {...droppableProvided.droppableProps}
             ref={droppableProvided.innerRef}>
             {

@@ -19,7 +19,8 @@ function ClearTodosButton() {
   };
 
   return <StyledClearTodosButton>
-    <button onClick={handleClick}>Clear Completed</button>
+    <button className='clear-button'
+      onClick={handleClick}>Clear Completed</button>
   </StyledClearTodosButton>;
 }
 

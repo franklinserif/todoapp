@@ -12,6 +12,7 @@ const StyledApp = styled.main`
   align-items: center;
   flex-direction: column;
   width: 90vw;
+  filter: drop-shadow(0 0 40px rgba(0, 0, 0, 0.3));
 `;
 
 /**

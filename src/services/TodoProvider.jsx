@@ -28,7 +28,7 @@ function TodoProvider({children}) {
   }, [todos]);
 
   return <TodoContext.Provider
-    value={{filteredTodos, dispatch, types, setAction}}
+    value={{filteredTodos, dispatch, types, setAction, todos}}
   >
     <Theme>
       {children}
