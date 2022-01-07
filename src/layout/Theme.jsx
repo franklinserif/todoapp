@@ -1,7 +1,7 @@
 import {createContext} from 'react';
 import useDarkMode from '../CustomHooks/useDarkMode';
 import GlobalStyle from './globalStyle.styled';
-import {darkStyle, lightStyle, theme} from './themeStyles';
+import {darkStyle, lightStyle, uniqueStyles} from './themeStyles';
 
 
 export const ThemeContext = createContext({});
@@ -15,11 +15,12 @@ function Theme({children}) {
   const [darkMode, setDarkMode] = useDarkMode(false);
 
   // if darkMode is true it will return light if it's not return dark style
-  const styles = darkMode ? {theme, lightStyle} : {theme, darkStyle};
+  const theme = darkMode ? {uniqueStyles, styles: lightStyle} :
+  {uniqueStyles, styles: darkStyle};
 
   // it would provide theme data and setThemeModo funct to children
-  return <ThemeContext.Provider value={{styles, setDarkMode, darkMode}}>
-    <GlobalStyle />
+  return <ThemeContext.Provider value={{theme, setDarkMode, darkMode}}>
+    <GlobalStyle theme={theme}/>
     {children}
   </ThemeContext.Provider>;
 }

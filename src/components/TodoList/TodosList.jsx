@@ -22,17 +22,15 @@ function TodoList() {
     const {source, destination} = result;
 
     if (!destination) {
-      return;
-    }
-
-    if (source.index === destination.index &&
+      console.log(result);
+      dispatch({types: types.DELETE, payload: {id: source.index}});
+    } else if (source.index === destination.index &&
       source.droppableId === destination.droppableId) {
-      return;
+    } else {
+      dispatch({types: types.REORDER, payload:
+        {sourceIndex: source.index, destinationIndex: destination.index},
+      });
     }
-
-    dispatch({types: types.REORDER, payload:
-      {sourceIndex: source.index, destinationIndex: destination.index},
-    });
   };
 
   return <StyledTodoList>
@@ -63,7 +61,7 @@ function TodoList() {
           </ul>
         )}
       </Droppable>
-    </DragDropContext>;
+    </DragDropContext>
   </StyledTodoList>;
 }
 

@@ -33,16 +33,19 @@ function Header() {
   const handleKeyPress = ({key}) => {
     if (key === KEY_ENTER && inputValue !== '') {
       dispatch({types: types.CREATE, payload: inputValue});
+      setInputValue('');
     }
   };
 
   useEffect(() => {
   }, [setDarkMode]);
 
-  return <StyledHeader onKeyPress={handleKeyPress}>
-    <DarkModeButton />
-    <h1>Todo app</h1>
-    <Input inputValue={inputValue} hanldeInputChange={hanldeInputChange}/>
+  return <StyledHeader onKeyPress={handleKeyPress} className='header'>
+    <h1 className='titleApp'>Todo</h1>
+    <DarkModeButton className='darkmode'/>
+    <Input
+      inputValue={inputValue}
+      hanldeInputChange={hanldeInputChange}/>
   </StyledHeader>;
 }
 

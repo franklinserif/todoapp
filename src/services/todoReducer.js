@@ -31,6 +31,7 @@ function todoReducer(prevTodos, action) {
     }
     // Delete a todo
     case types.DELETE: {
+      console.log('delete', action.payload.id);
       return [...prevTodos.filter((todo) => todo.id !== action.payload.id)];
     }
 
