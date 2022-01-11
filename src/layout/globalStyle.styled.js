@@ -31,13 +31,14 @@ const GlobalStyle = createGlobalStyle`
    background-image: url(${({theme}) => theme.styles.backgroundImageMobile});
    background-repeat: no-repeat;
    background-size: 100% 70%;
+   transition: background-image 0.7s ease, background-color 0.3s ease;
  }
 
  @media screen and (min-width: 700px){
    body{
     background-image: url(${({theme}) => theme.styles.backgroundImageDesktop});
     background-repeat: no-repeat;
-    background-size: 100% 70%;
+    background-size: 100% 340px;
    }
  }
 

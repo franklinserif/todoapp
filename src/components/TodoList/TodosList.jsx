@@ -20,7 +20,7 @@ function TodoList() {
    */
   const handleDragAndDrop = (result) => {
     const {source, destination} = result;
-
+    console.log(result);
     if (!destination) {
       console.log(result);
       dispatch({types: types.DELETE, payload: {id: source.index}});
@@ -35,29 +35,29 @@ function TodoList() {
 
   return <StyledTodoList>
     <DragDropContext onDragEnd={(result) => handleDragAndDrop(result)}>
-      <Droppable droppableId='tasks'>
-        {(droppableProvided) => (
+      <Droppable droppableId='todo-list'>
+        {(provided) => (
           <ul className='todo-list'
-            {...droppableProvided.droppableProps}
-            ref={droppableProvided.innerRef}>
+            {...provided.droppableProps}
+            ref={provided.innerRef}>
             {
               filteredTodos.map((todo, index) =>
                 (<Draggable
                   key={todo.id}
-                  draggableId={todo.content}
-                  index={todo.id}>
-                  {(draggableProvided) => (
+                  draggableId={todo.id.toString()}
+                  index={index}>
+                  {(provided) => (
                     <li
-                      {...draggableProvided.draggableProps}
-                      ref={draggableProvided.innerRef}
-                      {...draggableProvided.dragHandleProps}>
+                      {...provided.draggableProps}
+                      ref={provided.innerRef}
+                      {...provided.dragHandleProps}>
                       <Todo todo={todo}
                       />
                     </li>
                   )}
                 </Draggable>))
             }
-            {droppableProvided.placeholder}
+            {provided.placeholder}
           </ul>
         )}
       </Droppable>
